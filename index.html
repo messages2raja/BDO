@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>BDO task: CSV upload and filter</title>
+  </head>
+  <body>
+    <div>
+      <!--Header section-->
+      <header>
+        <div class="logoContainer">
+          <span><img src="./logo.png" /></span>
+        </div>
+      </header>
+      <!--User Content section-->
+      <div class="formbold-main-wrapper">
+        <div class="formbold-form-wrapper">
+          <!--Upload CSV form section-->
+          <form id="myTargetForm" onsubmit="handleSubmit(event)">
+            <div>
+              <label class="formbold-form-label formbold-form-label-2">
+                Upload the CSV File
+              </label>
+              <div class="formbold-mb-5 formbold-file-input">
+                <input type="file" name="file" id="file" />
+                <label for="file">
+                  <div>
+                    <span class="formbold-drop-file"> Drop files here </span>
+                    <span class="formbold-or"> Or </span>
+                    <span class="formbold-browse"> Browse </span>
+                    <div id="fileName" class="formbold-filename"></div>
+                  </div>
+                </label>
+              </div>
+              <div class="formbold-mb-5">
+                <label for="columnNameInput" class="formbold-form-label">
+                  Select column name:
+                </label>
+
+                <select
+                  class="formbold-form-select"
+                  id="columnNameSelect"
+                  onchange="selectColumn()"
+                >
+                  <option>Select column</option>
+                </select>
+              </div>
+              <div class="formbold-mb-5">
+                <label for="startrow" class="formbold-form-label">
+                  Start Row:
+                </label>
+                <input
+                  type="number"
+                  id="startRowInput"
+                  name="startrow"
+                  min="1"
+                  class="formbold-form-input"
+                  placeholder="Enter a number"
+                />
+              </div>
+              <div class="formbold-mb-5">
+                <label for="endrow" class="formbold-form-label">
+                  End Row:
+                </label>
+                <input
+                  type="number"
+                  id="endRowInput"
+                  name="endrow"
+                  class="formbold-form-input"
+                  min="1"
+                  placeholder="Enter a number"
+                />
+              </div>
+              <button class="formbold-btn w-full" type="submit">
+                Display Results
+              </button>
+            </div>
+          </form>
+        </div>
+        <!--Displayn filtered results section section-->
+        <div class="formbold-form-wrapper">
+          <div>
+            <label class="formbold-form-label formbold-form-label-2">
+              Filtered Results
+              <button
+                class="formbold-btn w-half"
+                id="downloadCsv"
+                disabled
+                type="button"
+              >
+                Download CSV
+              </button>
+            </label>
+
+            <div id="displayFilteredData">
+              <div class="rightColumn">No Results to display</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Footer section-->
+      <footer></footer>
+    </div>
+    <script src="./csv_logic.js"></script>
+  </body>
+</html>
